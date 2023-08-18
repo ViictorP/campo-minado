@@ -114,4 +114,102 @@ public class CampoTeste {
 
         assertTrue(campo22.isAberto() && campo11.isFechado());
     }
+
+    @Test
+    void testeGetLinha() {
+        assertEquals(3, campo.getLinha());
+    }
+
+    @Test
+    void testeGetColuna() {
+        assertEquals(3, campo.getColuna());
+    }
+
+    @Test
+    void testeObjetivoAlcancado() {
+        Campo campo1 = new Campo(3, 3);
+        campo.abrir();
+
+        assertTrue(campo.objetivoAlcancado());
+    }
+
+    @Test
+    void testeObjetivoAlcancadoFalse() {
+        Campo campo1 = new Campo(3, 3);
+
+
+        assertFalse(campo.objetivoAlcancado());
+    }
+
+    @Test
+    void testeMinasNaVizinhanca() {
+        Campo campo1 = new Campo(3, 2);
+        campo.adicionarVizinho(campo1);
+
+        campo1.minar();
+
+        assertEquals(1, campo.minasNaVizinhanca());
+    }
+
+    @Test
+    void testeMinasNaVizinhanca2() {
+        Campo campo1 = new Campo(3, 2);
+        Campo campo2 = new Campo(3, 4);
+        campo.adicionarVizinho(campo1);
+        campo.adicionarVizinho(campo2);
+
+        campo1.minar();
+        campo2.minar();
+
+        assertEquals(2, campo.minasNaVizinhanca());
+    }
+
+    @Test
+    void testeReiniciar() {
+        campo.alternarMarcacao();
+        campo.reiniciar();
+
+        assertFalse(campo.isMarcado());
+    }
+
+    @Test
+    void testeToString() {
+        campo.alternarMarcacao();
+
+        assertEquals("x", campo.toString());
+    }
+
+    @Test
+    void testeToString2() {
+        campo.abrir();
+        campo.minar();
+
+        assertEquals("*", campo.toString());
+    }
+
+    @Test
+    void testeToString3() {
+        Campo campo1 = new Campo(3, 2);
+        Campo campo2 = new Campo(3, 4);
+        campo.adicionarVizinho(campo1);
+        campo.adicionarVizinho(campo2);
+        campo1.minar();
+        campo2.minar();
+        campo.abrir();
+
+        assertEquals("2", campo.toString());
+    }
+
+    @Test
+    void testeToString4() {
+        campo.abrir();
+
+        assertEquals(" ", campo.toString());
+    }
+
+    @Test
+    void testeToString5() {
+
+        assertEquals("?", campo.toString());
+    }
 }
