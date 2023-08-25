@@ -1,6 +1,4 @@
 package com.victor.cm.modelo;
-
-import com.victor.cm.excecao.ExplosaoException;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
