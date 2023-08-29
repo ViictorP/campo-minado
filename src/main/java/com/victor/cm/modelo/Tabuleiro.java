@@ -28,7 +28,7 @@ public class Tabuleiro implements CampoObservador {
     }
 
     private void notificarObservadores(boolean resultado) {
-        observadores.stream().forEach(o -> o.accept(new ResultadoEvento(resultado));
+        observadores.stream().forEach(o -> o.accept(new ResultadoEvento(resultado)));
     }
 
     public void abrir(int linha, int coluna) {
