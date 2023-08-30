@@ -43,9 +43,15 @@ public class BotaoCampo extends JButton implements CampoObservador, MouseListene
             default:
                 aplicarEstiloPadrao();
         }
+
+        SwingUtilities.invokeLater(() -> {
+            repaint();
+            validate();
+        });
     }
 
     private void aplicarEstiloPadrao() {
+        setBorder(BorderFactory.createBevelBorder(0));
         setBackground(BG_PADRAO);
         setText("");
     }
